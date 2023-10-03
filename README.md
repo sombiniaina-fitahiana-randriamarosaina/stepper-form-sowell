@@ -1,6 +1,4 @@
-# A public, no auth chat app (public-chat)
-
-A public, no auth chat app
+# A stepper form, to be refactored and improved (stepper-form)
 
 ## Install the dependencies
 ```bash
