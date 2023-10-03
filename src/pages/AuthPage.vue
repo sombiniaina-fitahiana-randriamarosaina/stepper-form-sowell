@@ -25,7 +25,12 @@
                       v-model.trim="username"
                       dense
                       outlined
-                      :rules="[(val) => !!val || 'Username is required']"
+                      :rules="[
+                        (val) => !!val || 'Username is required',
+                        (val) =>
+                          val.length > 3 ||
+                          'Username must at least have 4 characters',
+                      ]"
                       input-class="text-subtitle2 text-weight-medium"
                     />
                     <div
@@ -92,6 +97,7 @@ import { ionEyeSharp, ionEyeOffSharp } from '@quasar/extras/ionicons-v5';
 import { SessionStorage } from 'quasar';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useFormStore } from 'src/stores/form-store';
 
 enum PASSWORD_STRENGTH {
   TOO_SHORT = 'Too Short',
@@ -171,6 +177,8 @@ const passwordHint = computed(() => {
 const handleSubmit = () => {
   if (isSubmitBtnDisabled.value) return;
   SessionStorage.set('loggedUser', username.value);
+  const { resetForm } = useFormStore();
+  resetForm();
   $router.push({ name: 'index' });
 };
 </script>
