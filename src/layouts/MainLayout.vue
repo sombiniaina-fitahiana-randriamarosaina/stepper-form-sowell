@@ -4,7 +4,14 @@
       <q-toolbar>
         <q-toolbar-title>{{ title }}</q-toolbar-title>
 
-        <div>SW Forms</div>
+        <div>Welcome, {{ username }}</div>
+        <q-btn
+          class="q-ml-md"
+          flat
+          round
+          :icon="ionLogOutOutline"
+          @click="logout"
+        ></q-btn>
       </q-toolbar>
     </q-header>
 
@@ -15,10 +22,21 @@
 </template>
 
 <script setup lang="ts">
+import { ionLogOutOutline } from '@quasar/extras/ionicons-v5';
+import { SessionStorage } from 'quasar';
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 const $route = useRoute();
+const $router = useRouter();
 const title = computed(() => {
   return $route.meta.title || 'Untitled page';
 });
+const username = computed(() => {
+  return SessionStorage.getItem('loggedUser');
+});
+
+const logout = () => {
+  SessionStorage.remove('loggedUser');
+  $router.push({ name: 'login' });
+};
 </script>
