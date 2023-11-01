@@ -15,9 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <SummaryRowItem title="Fisrtname" :value="form.fisrtname" isValid="true"></SummaryRowItem>
+      <SummaryRowItem title="Fisrtname" :value="form.firstname" isValid="true"></SummaryRowItem>
       <SummaryRowItem title="Lastname" :value="form.lastname" isValid="false"></SummaryRowItem>
-      <SummaryRowItem title="Birthdate" :value="form.birthdate" isValid="true"></SummaryRowItem>
       <SummaryRowItem title="Birthdate" :value="form.birthdate" isValid="true"></SummaryRowItem>
       <SummaryRowItem title="Bio" :value="form.bio" isValid="true"></SummaryRowItem>
       <SummaryRowTitle title="Professional info"></SummaryRowTitle>
@@ -30,7 +29,7 @@
           <SummaryRowItem title="Title" :value="degree.title" isValid="true"></SummaryRowItem>
           <SummaryRowItem title="Field" :value="degree.field" isValid="true"></SummaryRowItem>
           <SummaryRowItem title="Year" :value="degree.year" isValid="true"></SummaryRowItem>
-          <SummaryRowItem title="Details" :value="degree.year" isValid="true"></SummaryRowItem>
+          <SummaryRowItem title="Details" :value="degree.details" isValid="true"></SummaryRowItem>
           <tr v-if="i < form.professional.degrees.length">
             <td colspan="3"></td>
           </tr>
@@ -40,8 +39,8 @@
         <SummaryRowTitle title="Publications"></SummaryRowTitle>
         <template v-for="(work, i) in form.published_works" :key="work.id">
           <SummaryRowItem title="Title" :value="work.title" isValid="true"></SummaryRowItem>
-          <SummaryRowItem title="Link" :value="work.title" isValid="true"></SummaryRowItem>
-          <SummaryRowItem title="Year" :value="work.title" isValid="true"></SummaryRowItem>
+          <SummaryRowItem title="Link" :value="work.link" isValid="true"></SummaryRowItem>
+          <SummaryRowItem title="Year" :value="work.year" isValid="true"></SummaryRowItem>
           <tr v-if="i < form.published_works_count - 1">
             <td colspan="3"></td>
           </tr>
