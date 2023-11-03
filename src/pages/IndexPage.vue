@@ -28,7 +28,16 @@
         <publication-page></publication-page>
       </q-step>
 
-      <q-step :name="4" title="Summary" :icon="ionSaveOutline">
+      <q-step
+        :name="4"
+        title="Users list"
+        :icon="ionPersonOutline"
+        :done="step > 4"
+      >
+        <users-page></users-page>
+      </q-step>
+
+      <q-step :name="5" title="Summary" :icon="ionSaveOutline">
         <summary-page></summary-page>
       </q-step>
 
@@ -37,7 +46,7 @@
           <q-btn
             @click="stepper.next()"
             color="primary"
-            :label="step === 4 ? 'Finish' : 'Continue'"
+            :label="step === 5 ? 'Finish' : 'Continue'"
           />
           <q-btn
             v-if="step > 1"
@@ -58,6 +67,7 @@ import {
   PersonalPage,
   ProPage,
   PublicationPage,
+  UsersPage,
   SummaryPage,
 } from 'src/pages/Stepper';
 import {
