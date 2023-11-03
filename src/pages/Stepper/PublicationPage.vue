@@ -7,7 +7,10 @@
             <q-icon name="book" />
           </template>
         </q-input>
-        <q-input outlined label="Field" v-model="work.link">
+        <q-input 
+          outlined label="Field" 
+          v-model="work.link" 
+          :rules="[validateLink]">
           <template v-slot:prepend>
             <q-icon name="link" />
           </template>
@@ -32,5 +35,12 @@
 </template>
 <script setup lang="ts">
 import { useFormStore } from 'src/stores/form-store';
+import { computed } from 'vue';
+
 const { form } = useFormStore();
+
+const validateLink = computed(() => (value : string) => {
+      const urlPattern = /^http(s)?:\/\/([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\S*)$/;
+      return urlPattern.test(value) ? true : 'Invalid link. Please enter a valid HTTP or HTTPS link.';
+})
 </script>
